@@ -1,0 +1,90 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Buy A Ship</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+  <div class="div4">
+
+    <div class="div3">
+      <div class="div6">
+    <h2>Your Current Credit Count: <%=creditsLeft%></h2>
+  </div>
+  </div>
+   <br>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Here are the ships you can afford: </h3>
+    <ul class="ships">
+      <%console.log(ships.length)%>
+     <% for (var i=0; i < ships.length; i++) { %>
+       <%console.log(ships[i].name)%>
+        <div class="div5">
+        <li class="ship">
+         <span><%= ships[i].name %> </span>
+         <br>
+         <span>Model: <%= ships[i].model %></span>
+         <br>
+         <span>Manufacturer: <%= ships[i].manufacturer %></span>
+         <br>
+         <span>Cost: <%= ships[i].cost_in_credits %></span>
+         <br>
+         <span>Max Speed: <%= ships[i].max_atmosphering_speed %></span>
+         <br>
+         <span>Model: <%= ships[i].model %></span>
+         <br>
+         <span>Ship Class: <%= ships[i].starship_class%></span>
+         <br>
+         <span>Hyperdrive Rating: <%= ships[i].hyperdrive_rating %></span>
+         <form action="/starships" method="POST">
+          <input type= "hidden" name = "credits" value= "<%=creditsLeft-ships[i].cost_in_credits%>">
+
+          <input type="hidden" name = "owned" value = "<%=ships[i].name%>" >
+
+           <button type="submit" >Buy</button>
+         </form>
+</li>
+</div>
+    <br>
+
+     <% } %>
+   </ul>
+</div>
+<div class = "col-lg-6">
+  <h3>Your Fleet:</h3>
+
+   <ul class="owned">
+     <div class="div5">
+  <%for (var i=0; i < owned.length; i++) { %>
+   <li class="owneds">
+     <span>Ship: <%= owned[i].name+" x"+owned[i].count%></span>
+     <br>
+   </li>
+   <%}%>
+ </div>
+ </ul>
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <span>Copyright © Andy Li 2020</span>
+  </div>
+</footer>
+</div>
+  </body>
+</html>
