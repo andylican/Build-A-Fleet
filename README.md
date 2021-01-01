@@ -1,5 +1,5 @@
 # Build-A-Fleet
-Try it out: https://buildafleet.herokuapp.com/
+Try it out: https://buildafleet.herokuapp.com/ (site may take a few seconds to load at first as it needs to start the server)
 
 A Star Wars themed web app that allows the user to buy starships and build a fleet with the amount of credits inputted. 
 
